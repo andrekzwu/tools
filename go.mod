@@ -1,3 +1,3 @@
-module andrekzwu.code/tools
+module andrekzwu/tools
 
 go 1.19
