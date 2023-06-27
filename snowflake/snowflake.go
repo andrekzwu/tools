@@ -1,7 +1,6 @@
 package snowflake
 
 import (
-	"fmt"
 	"sync"
 	"time"
 
@@ -41,7 +40,7 @@ func init() {
 // New 生成雪花算法生成器
 func New(workId int) *Snowflake {
 	if workId < 0 || workId > workerIdMax {
-		panic(fmt.Sprintf("invalid work id"))
+		panic("invalid work id")
 	}
 	return &Snowflake{
 		Mutex:         sync.Mutex{},
