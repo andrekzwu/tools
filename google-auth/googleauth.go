@@ -34,6 +34,11 @@ func VerifyCode(secret, code string) bool {
 	return getCode(secret) == code
 }
 
+// GetCode 获取动态验证码
+func GetCode(secret string) string {
+	return getCode(secret)
+}
+
 func hmacSha1(key, data []byte) []byte {
 	h := hmac.New(sha1.New, key)
 	if len(data) > 0 {
