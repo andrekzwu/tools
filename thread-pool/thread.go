@@ -52,6 +52,7 @@ func NewThreadPool(threadNums int) (*ThreadPool, error) {
 		ThreadNums:  threadNums,
 		FreeChans:   make(chan int, threadNums),
 		Mutex:       sync.Mutex{},
+		QueuesMutex: sync.Mutex{},
 		ThreadInfos: make([]*ThreadInfo, 0),
 		Context:     ctx,
 		Cancel:      cancel,
