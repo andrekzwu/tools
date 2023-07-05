@@ -142,11 +142,13 @@ func (tp *ThreadPool) threadFunc(ctx context.Context, threadInfo *ThreadInfo) {
 
 // queueMonitor
 func (tp *ThreadPool) queueMonitor(ctx context.Context) {
+	ticker := time.NewTicker(queueInterval)
+	defer func() { ticker.Stop() }()
 	for {
 		select {
 		case <-ctx.Done():
 			return
-		case <-time.NewTicker(queueInterval).C:
+		case <-ticker.C:
 		}
 		if len(tp.Queues) == 0 {
 			continue
